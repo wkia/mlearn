@@ -16,13 +16,13 @@ from sklearn.preprocessing import StandardScaler
 ## perceptron-train.csv и perceptron-test.csv. Целевая переменная
 ## записана в первом столбце, признаки — во втором и третьем.
 
-inputData = pandas.read_csv('perceptron-train.csv')
+inputData = pandas.read_csv('perceptron-train.csv', header=None)
 X = inputData.iloc[:, 1:]
 print(np.shape(X))
 y = inputData.iloc[:, 0]
 print(np.shape(y))
 
-inputData = pandas.read_csv('perceptron-test.csv')
+inputData = pandas.read_csv('perceptron-test.csv', header=None)
 X_test = inputData.iloc[:, 1:]
 print(np.shape(X_test))
 y_test = inputData.iloc[:, 0]
