@@ -81,16 +81,13 @@ precisions = {'score_logreg' : 0., 'score_svm' : 0., 'score_knn' : 0., 'score_tr
 for name, _ignored in precisions.items():
     pr = sklm.precision_recall_curve(data['true'], data[name])
     pr = pd.DataFrame({'precision': pr[0], 'recall': pr[1]})
-    print(pr)
     pr = pr[pr['recall'] >= 0.7]['precision']
-    print(pr)
     precisions[name] = pr.max()
-    print(precisions)
 
 res = pd.Series(precisions).sort_values()
 
 # buildding the answer to submit
-answer = '%s' % (res.tail(1).index[0])
+answer = res.tail(1).index[0]
 print('answer=', answer)
 f = open('answer3-4-4.txt', 'w')
 f.write(answer)
